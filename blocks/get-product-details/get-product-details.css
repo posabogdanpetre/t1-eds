@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Required for correct iframe sizing — AEM section margins inflate shadow body */
+main > div,
+main > .section,
+main > .section:first-of-type {
+  margin: 0;
+}
+main > .section > div {
+  max-width: none;
+  padding: 0;
+}
+body {
+  overflow: auto;
+}
+
+main .get-product-details {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 280px;
+}
+
+main .get-product-details .product-detail-card {
+  display: flex;
+  flex-direction: row;
+  max-width: 600px;
+  height: 280px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Image container — left side, fixed 260px width */
+main .get-product-details .product-image-container {
+  position: relative;
+  width: 260px;
+  flex-shrink: 0;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main .get-product-details .product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+main .get-product-details .image-fallback {
+  width: 100%;
+  height: 100%;
+}
+
+/* CTA button on image — bottom center */
+main .get-product-details .cta-button {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 24px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+main .get-product-details .cta-button:hover {
+  opacity: 0.9;
+}
+
+main .get-product-details .cta-button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Product info — right side, darkened palette background set in JS */
+main .get-product-details .product-info-container {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+}
+
+main .get-product-details .product-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: inherit;
+}
+
+main .get-product-details .product-description {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  opacity: 0.78;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: inherit;
+}
+
+main .get-product-details .product-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+}
+
+main .get-product-details .product-price {
+  font-size: 16px;
+  font-weight: 700;
+  color: inherit;
+}
+
+main .get-product-details .product-category {
+  padding: 4px 10px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  color: inherit;
+}
+
+/* Dark theme — dim outer widget background only, not the palette-colored card */
+@media (prefers-color-scheme: dark) {
+  main .get-product-details {
+    background: transparent;
+  }
+  main .get-product-details .product-image-container {
+    background: #2a2a2a;
+  }
+}
+
+body.dark main .get-product-details {
+  background: transparent;
+}
+
+body.dark main .get-product-details .product-image-container {
+  background: #2a2a2a;
+}
+
+/* Responsive — stack vertically on narrow viewports */
+@media (max-width: 520px) {
+  main .get-product-details .product-detail-card {
+    flex-direction: column;
+    height: auto;
+    max-height: 480px;
+  }
+
+  main .get-product-details .product-image-container {
+    width: 100%;
+    height: 200px;
+  }
+
+  main .get-product-details .product-info-container {
+    max-height: 280px;
+  }
+}
